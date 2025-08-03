@@ -37,7 +37,7 @@ kill -9 **
 sudo pacman -Rns fzf
 
 --symlink to a path
-ls -s folder/file.sh link.sh --or any path such as usr/loal/bin/ for $PATH
+ln -s folder/file.sh link.sh --or any path such as usr/loal/bin/ for $PATH
 
 
 --$PATH
