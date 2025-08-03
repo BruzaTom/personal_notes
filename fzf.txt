@@ -1,0 +1,23 @@
+
+
+installed fzf with yay
+wrote 
+eval "$(fzf --bash)"
+to 
+.bashrc
+for commands
+
+--fuzzy find(dosent really work for say grub-btrfs)
+fzf
+
+--preview(telescope)
+fzf --preview="cat {}"
+
+--nvim select from preview
+nvim $(fzf --preview="cat {}")
+
+--way of cd with fuzzy find
+cd workspace/**
+
+--unalias in .bashrc
+unalias **

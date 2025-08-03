@@ -1,0 +1,8 @@
+git notes
+
+
+
+echo __pycatch__/ >> .gitignore = adds __pycatch__ to .gitignore(creats if not present)
+git clone git@github.com:BruzaTom/repo.git = clones repo cli method
+git reset --hard HEAD = reset the repo your working on
+git restore --staged . = unstage all

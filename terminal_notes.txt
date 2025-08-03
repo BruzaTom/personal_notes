@@ -1,0 +1,88 @@
+terminal notes
+
+
+(move file or directory to another location)
+mv ~/Downloads/myconfig.lua ~/.config/nvim/lua/myconfig.lua
+
+(move contents of a folder to a new folder)
+-files and directorys(non hidden)
+mv /source/folder/* /target/folder/
+-include hidden files(dotfiles, like .vimrc, .git)
+mv /source/folder/{*,.*} /target/folder/
+-{*, .*} includes . and .., so youll want to filter those out. safer is
+shopt -s dotglob
+mv /source/folder/* /target/folder/
+shopt -u dotglob
+
+(remove a directory)
+rm -rf ghostty-shader-playground/
+
+(add to bashrc)
+echo 'your-command-here' >> ~/.bashrc
+(or just nvim)
+
+--find all runing processes to kill
+ps aux
+--find pid and run
+kill pid
+or 
+kill -9 pid
+##or use fzf
+--skips ps aux and fuzzy finds
+kill -9 **
+
+--uninstall with pacman
+-n remove unused config files
+-s remove orphaned dependancies installed with fzf
+sudo pacman -Rns fzf
+
+--symlink to a path
+ls -s folder/file.sh link.sh --or any path such as usr/loal/bin/ for $PATH
+
+
+--$PATH
+
+
+
+
+
+
+
+After-Crash/arch filesystem and btfs
+------------------------------------
+            (check current mounts)
+mount | grep '^/dev' or findmnt -o TARGET,SOURCE,FSTYPE,OPTIONS
+            (confirm Btrfs Subvolume mounts)
+btrfs subvolume list /
+ID 256 gen 6827 top level 5 path @
+ID 257 gen 6828 top level 5 path @home
+ID 258 gen 6827 top level 5 path @log
+ID 259 gen 5670 top level 5 path @pkg
+ID 260 gen 18 top level 256 path var/lib/portables
+ID 261 gen 18 top level 256 path var/lib/machines
+            (see what was supposed to mount and boot)
+cat /etc/fstab
+# Static information about the filesystems.
+# See fstab(5) for details.
+
+# <file system> <dir> <type> <options> <dump> <pass>
+# /dev/nvme0n1p2
+UUID=860e895c-fe13-4946-a07c-51ae60ef551b       /               btrfs           rw,relatime,compress=zstd:3,ssd,discard=async,space_cache=v2,subvol=/@  0 0
+
+# /dev/nvme0n1p2
+UUID=860e895c-fe13-4946-a07c-51ae60ef551b       /home           btrfs           rw,relatime,compress=zstd:3,ssd,discard=async,space_cache=v2,subvol=/@home      0 0
+
+# /dev/nvme0n1p2
+UUID=860e895c-fe13-4946-a07c-51ae60ef551b       /var/cache/pacman/pkg   btrfs           rw,relatime,compress=zstd:3,ssd,discard=async,space_cache=v2,subvol=/@pkg       0 0
+
+# /dev/nvme0n1p2
+UUID=860e895c-fe13-4946-a07c-51ae60ef551b       /var/log        btrfs           rw,relatime,compress=zstd:3,ssd,discard=async,space_cache=v2,subvol=/@log       0 0
+
+# /dev/nvme0n1p1
+UUID=D549-08D7          /boot           vfat            rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro   0 2
+
+# /dev/nvme0n1p2
+UUID=860e895c-fe13-4946-a07c-51ae60ef551b       /               btrfs           ro,relatime,ssd,discard=async,space_cache=v2,subvol=/   0 0
+
+# /dev/nvme0n1p2
+UUID=860e895c-fe13-4946-a07c-51ae60ef551b       /               btrfs           rw,relatime,ssd,discard=async,space_cache=v2,subvol=/@  0 0

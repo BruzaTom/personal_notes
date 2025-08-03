@@ -1,0 +1,41 @@
+pylance
+tk
+tmux
+nvim
+gnome-tweaks
+git
+ghostty
+ssh
+sudo pacman -S nodejs npm
+yay{
+  pinta
+  }
+base-devil{
+  autoconf
+  automake
+  binutils
+  bison
+  fakeroot
+  file
+  findutils
+  flex
+  gawk
+  gcc
+  gettext
+  grep
+  groff
+  gzip
+  libtool
+  m4
+  make
+  patch
+  pkgconf
+  sed
+  sudo
+  texinfo
+  which
+  }
+wget
+usbutils
+dkms
+

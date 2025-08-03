@@ -1,0 +1,26 @@
+tmux notes
+
+
+
+tmux = make new session
+tmux ls = list sessions
+tmux attach = attach to previous session
+
+(ctl+b) = leader
+leader+c = new window
+leader+n = next window
+leader+index = move to index
+leader+% = split vertical
+leader+" = split horizontal
+leader+arrow = move to arrow
+leader+: = command mode
+leader+d = detach
+leader+s = select sessions
+
+:rename-window renamed_window
+:rename-session renamed_session
+
+
+~/.tmux.conf
+--changed leader+r to refresh
+--set -g mouse on

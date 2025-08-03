@@ -1,0 +1,24 @@
+nvim notes
+
+
+
+yy = copy entire line
+dd = delete entire line
+5dd = delete number of lines starting from curser
+p = lowcase pastes blow curser line and viseversa for uppercase
+g_ = go to end of line
+/ = start highlighting a keyphrase or word
+n or N = next
+
+
+#replace editing
+
+:%s/oldphrase/newphrase/g = replases string with new globally
+
+:%s/old_name/new_name/gc
+y → yes, change this one
+n → no, skip
+a → change all remaining without asking
+q → quit right now
+l → change this one and then quit
+^E/^Y → scroll up/down (if match is off-screen)(^ means ctl)

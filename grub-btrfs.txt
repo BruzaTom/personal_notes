@@ -1,0 +1,67 @@
+                     __          __      __             ___         
+                    /\ \        /\ \    /\ \__        /'___\        
+   __   _ __   __  _\ \ \____   \ \ \___\ \ ,_\ _ __ /\ \__/  ____  
+ /'_ `\/\`'__\/\ \/\ \ \ '__`\   \ \ '__`\ \ \//\`'__\ \ ,__\/',__\ 
+/\ \L\ \ \ \/ \ \ \_\ \ \ \L\ \   \ \ \L\ \ \ \\ \ \/ \ \ \_/\__, `\
+\ \____ \ \_\  \ \____/\ \_,__/    \ \_,__/\ \__\ \_\  \ \_\\/\____/
+ \/___L\ \/_/   \/___/  \/___/      \/___/  \/__/\/_/   \/_/ \/___/ 
+   /\____/                                                          
+   \_/__/                                                                                 
+for archtomux
+
+
+--check status of grub btrfs
+systemctl status grub-btrfsd
+
+--list subvolumes of btrfs
+sudo btrfs subvolume list /
+
+--list timeshift snapshots
+sudo timeshift --list
+
+--live watch
+journalctl -f
+
+--path to see grub-btrfs config
+/boot/grub/grub-btrfs.cfg
+--also
+sudo EDITOR=nvim systemctl edit grub-btrfsd
+
+
+To manually generate grub snapshot entries you can run "sudo /etc/grub.d/41_snapshots-btrfs" which updates grub-btrfs.cfg. You then need to regenerate the GRUB configuration by running one of the following commands:
+
+On Arch Linux or Gentoo use grub-mkconfig -o /boot/grub/grub.cfg.
+
+grub-btrfs uses inotify-tools to observe 41_snapshots-btrfs
+
+
+
+
+[tomux@arachtomux ~]$ ls  /boot/grub/
+fonts  grub-btrfs.cfg  grub.cfg  grubenv  locale  themes  x86_64-efi
+
+[tomux@arachtomux ~]$ ls /etc/grub.d/
+00_header  15_ostree     25_bli        30_uefi-firmware  41_custom           README
+10_linux   20_linux_xen  30_os-prober  40_custom         41_snapshots-btrfs
+
+
+
+To start the daemon run:
+
+sudo systemctl start grub-btrfsd
+
+To activate it during system startup, run:
+
+sudo systemctl enable grub-btrfsd
+
+
+By default the daemon is watching the directory /.snapshots. If the daemon should watch a different directory, it can be edited with:
+
+sudo systemctl edit --full grub-btrfsd
+--edit ExecStart=/usr/bin/grub-btrfsd --syslog /.snapshots 
+--to 
+ExecStart=/usr/bin/grub-btrfsd --syslog --timeshift-auto
+
+When done, the service should be restarted with:
+
+sudo systemctl restart grub-btrfsd
