@@ -1,5 +1,10 @@
-nvim notes
-
+ ________   ___      ___ ___  _____ ______      
+|\   ___  \|\  \    /  /|\  \|\   _ \  _   \    
+\ \  \\ \  \ \  \  /  / | \  \ \  \\\__\ \  \   
+ \ \  \\ \  \ \  \/  / / \ \  \ \  \\|__| \  \  
+  \ \  \\ \  \ \    / /   \ \  \ \  \    \ \  \ 
+   \ \__\\ \__\ \__/ /     \ \__\ \__\    \ \__\
+    \|__| \|__|\|__|/       \|__|\|__|     \|__|
 
 
 yy = copy entire line
@@ -9,6 +14,7 @@ p = lowcase pastes blow curser line and viseversa for uppercase
 g_ = go to end of line
 / = start highlighting a keyphrase or word
 n or N = next
+gg = top
 
 
 #replace editing

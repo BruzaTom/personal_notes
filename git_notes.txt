@@ -1,8 +1,19 @@
-git notes
-
-
+           ░██   ░██    
+                 ░██    
+ ░████████ ░██░████████ 
+░██    ░██ ░██   ░██    
+░██    ░██ ░██   ░██    
+░██   ░███ ░██   ░██    
+ ░█████░██ ░██    ░████ 
+       ░██              
+ ░███████               
 
 echo __pycatch__/ >> .gitignore = adds __pycatch__ to .gitignore(creats if not present)
 git clone git@github.com:BruzaTom/repo.git = clones repo cli method
+
 git reset --hard HEAD = reset the repo your working on
+git reset --hard <commit_hash> = go back to a commit and destroy the newers
+(if you messed up and wanted another commit simply reset to that hash,
+if using your terminal for working. because github still has has the hash)
+
 git restore --staged . = unstage all

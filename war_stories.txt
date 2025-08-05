@@ -1,0 +1,6 @@
+Variable Naming Conflict:
+I accidentally named a variable `date`, which shadowed the built-in `date` class from Python’s `datetime` module. This broke calendar references like:
+    calendar.day_abbr[date(2025, 8, 4).weekday()]
+The result? A `TypeError` — because my custom `date` variable wasn’t callable.
+Lesson learned: Never reuse names like `date`, `str`, or `list` for your variables. It overrides their usual behavior and causes subtle breakage, especially in calendar-aware code.
+
