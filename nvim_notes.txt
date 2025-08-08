@@ -15,9 +15,14 @@ g_ = go to end of line
 / = start highlighting a keyphrase or word
 n or N = next
 gg = top
+G = bottom
+gg=G   = correct ndents throught entire script
 
 
 #replace editing
+--my coustom config i use this line in vim-options.lua
+--(for ciw)
+vim.keymap.set("n", "rr", "ciw", { desc = "Change inner word" })
 
 :%s/oldphrase/newphrase/g = replases string with new globally
 
