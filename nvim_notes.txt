@@ -20,9 +20,10 @@ gg=G   = correct ndents throught entire script
 
 
 #replace editing
---my coustom config i use this line in vim-options.lua
---(for ciw)
+--(ciw)
 vim.keymap.set("n", "rr", "ciw", { desc = "Change inner word" })
+--(:%s at curser)
+vim.keymap.set("n", "ff", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/g<Left><Left>]], { desc = "Replace word under cursor" })
 
 :%s/oldphrase/newphrase/g = replases string with new globally
 
