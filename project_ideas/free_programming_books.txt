@@ -1,0 +1,111 @@
+## 📚 TL;DR — Free Programming Books Cache & Tracker
+
+Build a local library from the `free-programming-books` repo:
+- 🗂️ Parse Markdown files to extract direct PDF/HTML links
+- 📥 Download resources into organized folders (by language/topic)
+- 🧠 Store metadata (title, author, format, tags) in JSON or SQLite
+- 📊 Track reading progress, milestones, and timestamps
+- 🎛️ Optional GUI/CLI to browse, search, and log cycles
+- 🎨 Integrate with planner/dashboard for ritualized reading flow
+
+dev-library/
+├── books/
+│   ├── python/
+│   │   ├── Automate_the_Boring_Stuff.pdf
+│   │   └── metadata.json
+│   ├── algorithms/
+│   │   ├── Introduction_to_Algorithms.pdf
+│   │   └── metadata.json
+│   └── ...
+├── metadata/
+│   └── index.json         # Global metadata index
+├── progress/
+│   └── reading-log.json   # Tracks status, milestones, timestamps
+└── scripts/
+    └── fetch_books.py     # Parser + downloader
+
+🧠 Starter Parser: fetch_books.py
+
+This script:
+
+    Parses a Markdown file
+
+    Extracts direct PDF links
+
+    Downloads them
+
+    Stores metadata
+
+import os, re, requests, json
+from urllib.parse import urlparse
+
+MD_FILE = "free-programming-books.md"
+LIBRARY_DIR = "dev-library/books"
+METADATA_INDEX = "dev-library/metadata/index.json"
+
+def sanitize_filename(title):
+    return re.sub(r'[^\w\s-]', '', title).strip().replace(' ', '_')
+
+def extract_links(md_path):
+    with open(md_path, "r", encoding="utf-8") as f:
+        lines = f.readlines()
+    books = []
+    for line in lines:
+        match = re.match(r"\* 
+
+\[(.+?)\]
+
+\((https?://.+?)\)", line)
+        if match and ".pdf" in match.group(2):
+            books.append({
+                "title": match.group(1),
+                "url": match.group(2),
+                "filename": sanitize_filename(match.group(1)) + ".pdf"
+            })
+    return books
+
+def download_book(book, topic="misc"):
+    topic_dir = os.path.join(LIBRARY_DIR, topic)
+    os.makedirs(topic_dir, exist_ok=True)
+    path = os.path.join(topic_dir, book["filename"])
+    try:
+        r = requests.get(book["url"], timeout=10)
+        with open(path, "wb") as f:
+            f.write(r.content)
+        print(f"✅ Downloaded: {book['title']}")
+        return True
+    except Exception as e:
+        print(f"❌ Failed: {book['title']} — {e}")
+        return False
+
+def save_metadata(book, topic="misc"):
+    index_path = METADATA_INDEX
+    os.makedirs(os.path.dirname(index_path), exist_ok=True)
+    try:
+        if os.path.exists(index_path):
+            with open(index_path, "r") as f:
+                index = json.load(f)
+        else:
+            index = []
+        book["topic"] = topic
+        index.append(book)
+        with open(index_path, "w") as f:
+            json.dump(index, f, indent=2)
+    except Exception as e:
+        print(f"⚠️ Metadata error: {e}")
+
+if __name__ == "__main__":
+    books = extract_links(MD_FILE)
+    for book in books[:10]:  # limit for testing
+        if download_book(book):
+            save_metadata(book)
+
+🧩 Next Steps
+
+    Add fuzzy search or tag filters
+
+    Track reading progress in reading-log.json
+
+    Build a Tkinter GUI with scrollable book list + preview pane
+
+    Integrate splashboard banners for milestones

@@ -1,0 +1,21 @@
+nice tips for python
+
+
+Python Zero-Padding with .zfill()
+
+- `.zfill(n)` pads a string with leading zeros until it reaches length `n`
+- Only works on strings → use `str(num).zfill(n)`
+- If string is already ≥ `n` characters, no padding is added
+
+Examples:
+  str(5).zfill(2)     → "05"
+  str(50).zfill(2)    → "50"
+  str(50).zfill(3)    → "050"
+  str(-7).zfill(3)    → "-07"
+
+Alternative:
+  f"{num:02}"         → zero-padded to 2 digits
+  f"{num:03}"         → zero-padded to 3 digits
+
+Use `.zfill()` for quick string padding; use `f-strings` for more formatting control.
+
