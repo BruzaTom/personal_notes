@@ -17,3 +17,7 @@ git reset --hard <commit_hash> = go back to a commit and destroy the newers
 if using your terminal for working. because github still has has the hash)
 
 git restore --staged . = unstage all
+
+if added read me on githubwebsite
+git fetch origin
+git reset -hard origin/main
