@@ -32,3 +32,11 @@ source ~/.bashrc
 # Quick-run any test.cpp file without leaving clutter
 alias runcpp='g++ test.cpp -o temp_exec && ./temp_exec && rm temp_exec'
 
+
+cmake
+-------------------------------------------------------------------
+to build a cmake project:
+mkdir build
+cd build
+cmake ..
+make

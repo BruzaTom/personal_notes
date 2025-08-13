@@ -1,0 +1,71 @@
+to build a game engine using cpp and opengl
+-------------------------------------------
+you will need
+--------------
+cpp tools
+openGL
+cmake
+glfw
+
+
+
+openGL
+-----------------------------------------------------------------------------
+OpenGL (Open Graphics Library) is a cross-platform, 
+cross-language API for rendering 2D and 3D graphics. 
+It provides a standardized interface to interact with your GPU for hardware-accelerated rendering.
+What OpenGL Does
+-----------------
+Draws 2D and 3D graphics using shaders and buffers
+Leverages GPU acceleration for real-time performance
+Manages rendering pipelines: vertex, fragment, geometry, etc.
+Works on Windows, macOS, Linux, and many embedded systems
+Integrates with C/C++, and has bindings for many other languages
+Why Use OpenGL?
+-----------------
+OpenGL is widely supported and well-documented, making it ideal for:
+Game engines and simulations
+CAD and scientific visualization
+Educational graphics projects
+Cross-platform rendering
+
+cmake
+-----------------------------------------------------------------------------
+CMake is an open-source, cross-platform build system generator. 
+It helps you define how your software should be built, 
+then translates that into native build files for tools like Make, Ninja, Visual Studio, or Xcode.
+What CMake Does
+----------------
+Generates build files from CMakeLists.txt for multiple platforms
+Supports testing, packaging, and installation
+Finds system and third-party libraries automatically
+Works with C, C++, Fortran, and more
+Integrates with IDEs like Visual Studio, CLion, and Qt Creator
+Why Use CMake?
+----------------
+CMake abstracts away platform-specific build quirks. 
+You write one set of instructions, and it generates the right build files for your target system. 
+It’s ideal for:
+Cross-platform development
+Complex dependency management
+Modular, reusable projects
+
+glfw
+------------------------------------------------------------------------------
+GLFW (Graphics Library Framework) is an open-source,
+cross-platform C library designed to help you build applications using OpenGL, OpenGL ES, or Vulkan
+What GLFW Does
+---------------
+Creates windows and manages OpenGL/Vulkan contexts
+Handles input from keyboard, mouse, and gamepads
+Supports multiple monitors, high-DPI, and fullscreen modes
+Manages events like window resizing, key presses, and mouse movement
+Works on Linux (X11 + Wayland), macOS, and Windows
+Why Use GLFW?
+--------------
+OpenGL by itself doesn’t give you a way to open a window or receive input. 
+GLFW fills that gap with a clean, minimal API. It’s especially popular in:
+Game engines
+Graphics demos
+Educational projects (like LearnOpenGL)
+Cross-platform tools

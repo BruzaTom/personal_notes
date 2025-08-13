@@ -1,10 +1,15 @@
 terminal notes
 
+cp contents of a dir to another dir
+-------------------------------------------
+cp -r source_dir/ target_dir/
 
 (move file or directory to another location)
+-----------------------------------------------
 mv ~/Downloads/myconfig.lua ~/.config/nvim/lua/myconfig.lua
 
 (move contents of a folder to a new folder)
+--------------------------------------------
 -files and directorys(non hidden)
 mv /source/folder/* /target/folder/
 -include hidden files(dotfiles, like .vimrc, .git)
@@ -15,15 +20,17 @@ mv /source/folder/* /target/folder/
 shopt -u dotglob
 
 (remove a directory)
+--------------------------------------------
 rm -rf ghostty-shader-playground/
 
 (add to bashrc)
+--------------------------------------------
 echo 'your-command-here' >> ~/.bashrc
 (or just nvim)
 
 --find all runing processes to kill
+--------------------------------------------
 ps aux
---find pid and run
 kill pid
 or 
 kill -9 pid
